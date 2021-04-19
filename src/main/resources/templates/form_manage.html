@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>后台管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/bootstrap-3.3.5.min.css">
+    <link rel="stylesheet" href="/static/css/mui.min.css">
+    <link rel="stylesheet" href="/static/css/mui.picker.min.css">
+    <link rel="stylesheet" href="/static/css/dialog_style.css"/>
+    <link rel="stylesheet" href="/static/css/common.css"/>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/mui.min.js"></script>
+    <script src="/static/js/mui.picker.min.js"></script>
+    <script src="/static/js/bootstrap-3.3.5.min.js"></script>
+    <script src="/static/js/dialog_view.js"></script>
+</head>
+<body>
+<!-- 头部 -->
+<div class="dvheader">
+    <div style="width: 20%; height: 100%;padding-left: 30px;">
+        企业订单管理系统
+    </div>
+    <div id="homepage" class="item">
+        <a th:href="@{/index}"><img src="/static/img/homepage.png" class="item_image"/></a>
+        <span class="item_text">首页</span>
+    </div>
+    <div id="order" class="item">
+        <a th:href="@{/form/manage}"><img src="/static/img/order.png" class="item_image"/></a>
+        <span class="item_text">订单管理</span>
+    </div>
+    <div id="people" class="item">
+        <a th:href="@{/emp/manage}"><img src="/static/img/people.png" class="item_image"/></a>
+        <span class="item_text">人事管理</span>
+    </div>
+    <div id="business" class="item">
+        <a th:href="@{/company/manage}"><img src="/static/img/business.png" class="item_image"/></a>
+        <span class="item_text">公司管理</span>
+    </div>
+    <div style="text-align: right; width: 750px;">
+        当前登录用户：[[${session.user.username}]] &nbsp;&nbsp;&nbsp;
+        <a th:href="@{/quit}" style="color: #ffffff">退出</a> &nbsp;&nbsp;&nbsp;
+        <a th:href="@{/user/updatePwd}" style="color: #ffffff">修改密码</a>
+    </div>
+</div>
+<!-- content -->
+<div class="content">
+    <!-- 左边固定区域 -->
+    <div class="leftContent">
+        <div class="left_item_all">
+            <div class="left_item">
+                <div class="manageTitle">
+                    <span>订单管理</span>
+                </div>
+                <div class="manageItem">
+                    <a th:href="@{/form/list}"><span>订单查询</span></a>
+                    <a th:if="${session.user.userType} ne 3" th:href="@{/form/add}"><span>订单添加</span></a>
+                    <a th:if="${session.user.userType} ne 3" th:href="@{/form/manage}"><span>订单管理</span></a>
+                </div>
+                <div class="manageTitle">
+                    <span>人事管理</span>
+                </div>
+                <div class="manageItem">
+                    <a th:href="@{/emp/list}"><span>业务员查询</span></a>
+                    <a th:if="${session.user.userType} eq 1" th:href="@{/emp/add}"><span>业务员添加</span></a>
+                    <a th:if="${session.user.userType} eq 1" th:href="@{/emp/manage}"><span>业务员管理</span></a>
+                </div>
+                <div class="manageTitle">
+                    <span>公司管理</span>
+                </div>
+                <div class="manageItem">
+                    <a th:href="@{/company/list}"><span>公司查询</span></a>
+                    <a th:if="${session.user.userType} eq 1" th:href="@{/company/add}"><span>公司添加</span></a>
+                    <a th:if="${session.user.userType} eq 1" th:href="@{/company/manage}"><span>公司管理</span></a>
+                </div>
+                <div class="manageTitle" th:if="${session.user.userType} eq 1">
+                    <span>系统用户管理</span>
+                </div>
+                <div class="manageItem" th:if="${session.user.userType} eq 1">
+                    <a th:href="@{/user/manage}"><span>用户管理</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rightContent" style="background: #ffffff; color: #000000; margin-left: 15px ">
+        <form class="form-horizontal" role="form" th:action="@{/form/manage/select}" method="post">
+            <div class="form-group" style="height: 60px; margin-top: 50px;">
+                <label class="col-sm-3 control-label">职员关键字查询：</label>
+                <div class="col-sm-6">
+                    <input name="text" type="text" class="form-control" placeholder="关键字检索...">
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-primary" type="submit">查询</button>
+                </div>
+            </div>
+        </form>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>订单编号</th>
+                <th>订单内容</th>
+                <th>订单状态</th>
+                <th>订单创建时间</th>
+                <th>签署公司id</th>
+                <th>签署公司</th>
+                <th>业务员id</th>
+                <th>业务员</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="form:${forms}">
+                <td>[[${form.formId}]]</td>
+                <td>[[${form.formContent}]]</td>
+                <td th:if="${#strings.equals(form.formState, 1)}" th:text="进行中"></td>
+                <td th:if="${#strings.equals(form.formState, 2)}" th:text="已完成"></td>
+                <td>[[${#dates.format(form.formCreateTime, 'yyyy-MM-dd HH:mm:ss')}]]</td>
+                <td>[[${form.company.companyId}]]</td>
+                <td>[[${form.company.companyName}]]</td>
+                <td>[[${form.employee.employeeId}]]</td>
+                <td>[[${form.employee.employeeName}]]</td>
+                <td th:if="${#strings.equals(form.formState, 1)}"><a th:href="@{/form/update/}+${form.formId}"
+                                                                     class="btn btn-sm btn-primary">编辑</a> &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{/form/delete/}+${form.formId}" class="btn btn-sm btn-danger">删除</a></td>
+                <td th:if="${#strings.equals(form.formState, 2)}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                        th:href="@{/form/delete/}+${form.formId}" class="btn btn-sm btn-danger">删除</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="/static/js/index.js"></script>
+<script type="text/javascript" th:inline="javascript">
+    $(document).ready(function () {
+        var message = [[${msg}]];
+        if (message != "" && message != null) {
+            alert(message);
+        }
+    });
+</script>
+</body>
+</html>

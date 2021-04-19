@@ -1,0 +1,113 @@
+input:focus {
+    border-color: #0062CC;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #00aaff;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    background-color: black;
+}
+
+.box {
+    background-color: white;
+    border-radius: 7px;
+    width: 500px;
+    padding: 20px;
+    margin: 180px auto;
+    min-height: 200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    width: 100%;
+    height: 60px;
+    font-size: 24.5px;
+    line-height: 60px;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.item_left {
+    width: 30%;
+    height: 60px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.item_left span {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #333333;
+}
+
+.item_right {
+    width: 70%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item_right input {
+    display: flex;
+    width: 85%;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 13px;
+    line-height: 30px;
+}
+
+.item_right span {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    color: red;
+    line-height: 30px;
+    font-size: 13px;
+}
+
+.item_right button {
+    margin-top: 20px;
+    width: 60px;
+    height: 30px;
+    color: #ffffff;
+    line-height: 15px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #006dcc;
+    background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.item_right a {
+    display: inline-block;
+    margin-top: 25px;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    color: #0088cc;
+    text-align: center;
+    cursor: pointer;
+    padding-left: 20px;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/bootstrap-3.3.5.min.css">
+    <link rel="stylesheet" href="/static/css/mui.min.css">
+    <link rel="stylesheet" href="/static/css/mui.picker.min.css">
+    <link rel="stylesheet" href="/static/css/dialog_style.css"/>
+    <!--<link rel="stylesheet" href="/static/css/common.css"/>-->
+    <link rel="stylesheet" href="/static/css/login.css"/>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/mui.min.js"></script>
+    <script src="/static/js/mui.picker.min.js"></script>
+    <script src="/static/js/bootstrap-3.3.5.min.js"></script>
+    <script src="/static/js/dialog_view.js"></script>
+</head>
+<body style="margin: 0; padding: 0; font-family: sans-serif !important;">
+<div class="container">
+    <div class="box">
+        <div class="title">
+            企业订单管理系统
+        </div>
+        <form th:action="@{/login}" method="post">
+            <div class="item">
+                <div class="item_left">
+                    <span>用户名</span>
+                </div>
+                <div class="item_right">
+                    <input name="username" id="username" type="text" size="18" maxlength="18" placeholder="用户名"/>
+                    <span id="username_warn" style="display: none;">请填写用户名称</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item_left">
+                    <span>密码</span>
+                </div>
+                <div class="item_right">
+                    <input name="password" id="password" type="password" size="18" maxlength="18" placeholder="密码"/>
+                    <span id="password_warn" style="display: none;">请填写密码</span>
+                </div>
+            </div>
+            <div class="form-group" style="height: 50px;">
+                <div class="col-sm-12" style="text-align: center">
+                    <button type="submit" class="btn btn-sm btn-primary">登录</button>
+                </div>
+            </div>
+            <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+        </form>
+        <div style="text-align: right">
+            <div><a href="/registerPage">没有账号？请去注册</a></div>
+        </div>
+    </div>
+</div>
+<script src="/static/js/login.js"></script>
+</body>
+</html>
