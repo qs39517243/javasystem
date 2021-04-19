@@ -24,7 +24,7 @@ public class EmployeeController {
     @Autowired
     FormService formService;
 
-    @GetMapping(value = "emp/list")
+    @GetMapping(value = "/emp/list")
     public String empList(HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -40,7 +40,7 @@ public class EmployeeController {
     }
 
     // 关键字查询——>list
-    @PostMapping(value = "emp/list/select")
+    @PostMapping(value = "/emp/list/select")
     public String empListSelect(String text, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -56,7 +56,7 @@ public class EmployeeController {
     }
 
     // 关键字查询——>manage
-    @PostMapping(value = "emp/manage/select")
+    @PostMapping(value = "/emp/manage/select")
     public String empManageSelect(String text, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -76,7 +76,7 @@ public class EmployeeController {
     }
 
     // 跳转添加职员页面
-    @GetMapping(value = "emp/add")
+    @GetMapping(value = "/emp/add")
     public String empAddToPage(HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -94,7 +94,7 @@ public class EmployeeController {
     }
 
     // 表单提交，添加职员
-    @PostMapping(value = "emp/add")
+    @PostMapping(value = "/emp/add")
     public String empAdd(Employee employee, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -120,7 +120,7 @@ public class EmployeeController {
     }
 
     // 跳转manage页面
-    @GetMapping(value = "emp/manage")
+    @GetMapping(value = "/emp/manage")
     public String empManage(HttpSession session, Model model) {
         // manage页面也需要所有的employee信息，只是多了update和delete
         // 如果用户不符合规范
@@ -141,7 +141,7 @@ public class EmployeeController {
 
 
     // 进入修改界面
-    @GetMapping(value = "emp/update/{id}")
+    @GetMapping(value = "/emp/update/{id}")
     public String empToUpdatePage(@PathVariable("id") Integer id, HttpSession session, Model model) {
         // 如果用户不符合规范
         User user = (User) session.getAttribute("user");
@@ -161,7 +161,7 @@ public class EmployeeController {
     }
 
     // 提交修改表单
-    @PostMapping(value = "emp/update")
+    @PostMapping(value = "/emp/update")
     public String empUpdate(Employee employee, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -187,7 +187,7 @@ public class EmployeeController {
     }
 
     // 删除
-    @GetMapping(value = "emp/delete/{id}")
+    @GetMapping(value = "/emp/delete/{id}")
     public String empDelete(@PathVariable("id") Integer id, HttpSession session, Model model) {
         // 如果用户不符合规范
         User user = (User) session.getAttribute("user");

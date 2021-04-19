@@ -20,7 +20,7 @@ public class CompanyController {
     CompanyService companyService;
 
     // 公司展示页面
-    @GetMapping(value = "company/list")
+    @GetMapping(value = "/company/list")
     public String companyList(HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -38,7 +38,7 @@ public class CompanyController {
     }
 
     // 公司manage页面
-    @GetMapping(value = "company/manage")
+    @GetMapping(value = "/company/manage")
     public String companyManage(HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -60,7 +60,7 @@ public class CompanyController {
     }
 
     // 公司关键词查询，去list
-    @PostMapping(value = "company/list/select")
+    @PostMapping(value = "/company/list/select")
     public String companyListSelect(String text, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -78,7 +78,7 @@ public class CompanyController {
     }
 
     // 公司关键词查询，去manage
-    @PostMapping(value = "company/manage/select")
+    @PostMapping(value = "/company/manage/select")
     public String companyManageSelect(String text, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -100,7 +100,7 @@ public class CompanyController {
     }
 
     // 跳转公司添加页面
-    @GetMapping(value = "company/add")
+    @GetMapping(value = "/company/add")
     public String companyAddToPage(HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -118,7 +118,7 @@ public class CompanyController {
     }
 
     // 添加公司功能
-    @PostMapping(value = "company/add")
+    @PostMapping(value = "/company/add")
     public String companyAdd(Company company, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -144,7 +144,7 @@ public class CompanyController {
     }
 
     // 删除公司功能
-    @GetMapping(value = "company/delete/{id}")
+    @GetMapping(value = "/company/delete/{id}")
     public String companyDelete(@PathVariable("id") Integer id, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -170,7 +170,7 @@ public class CompanyController {
     }
 
     // 跳转公司修改界面
-    @GetMapping(value = "company/update/{id}")
+    @GetMapping(value = "/company/update/{id}")
     public String companyUpdateToPage(@PathVariable("id") Integer id, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -191,7 +191,7 @@ public class CompanyController {
     }
 
     // 修改功能
-    @PostMapping(value = "company/update")
+    @PostMapping(value = "/company/update")
     public String companyUpdate(Company company, HttpSession session, Model model) {
 
         // 如果用户不符合规范

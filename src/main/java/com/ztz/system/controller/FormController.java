@@ -29,7 +29,7 @@ public class FormController {
     @Autowired
     CompanyService companyService;
 
-    @GetMapping(value = "form/list")
+    @GetMapping(value = "/form/list")
     public String formList(HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -45,7 +45,7 @@ public class FormController {
         return "form_list";
     }
 
-    @PostMapping(value = "form/list/select")
+    @PostMapping(value = "/form/list/select")
     public String formListSelect(String text, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -61,7 +61,7 @@ public class FormController {
         return "form_list";
     }
 
-    @GetMapping(value = "form/manage")
+    @GetMapping(value = "/form/manage")
     public String formManage(HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -80,7 +80,7 @@ public class FormController {
         return "form_manage";
     }
 
-    @PostMapping(value = "form/manage/select")
+    @PostMapping(value = "/form/manage/select")
     public String formManageSelect(String text, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -101,7 +101,7 @@ public class FormController {
     }
 
     // 去往add界面
-    @GetMapping(value = "form/add")
+    @GetMapping(value = "/form/add")
     public String formToAddPage(HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -123,7 +123,7 @@ public class FormController {
         return "form_add";
     }
 
-    @PostMapping(value = "form/add")
+    @PostMapping(value = "/form/add")
     public String formAdd(Form form, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -163,7 +163,7 @@ public class FormController {
     }
 
     // 去往update界面
-    @GetMapping(value = "form/update/{id}")
+    @GetMapping(value = "/form/update/{id}")
     public String formUpdateToPage(@PathVariable("id") Integer id, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -188,7 +188,7 @@ public class FormController {
         return "form_update";
     }
 
-    @PostMapping(value = "form/update")
+    @PostMapping(value = "/form/update")
     public String formUpdate(Form form, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -217,7 +217,7 @@ public class FormController {
         return "form_manage";
     }
 
-    @GetMapping(value = "form/delete/{id}")
+    @GetMapping(value = "/form/delete/{id}")
     public String formDelete(@PathVariable("id") Integer id, HttpSession session, Model model) {
 
         // 如果用户不符合规范

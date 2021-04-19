@@ -19,7 +19,7 @@ public class UserController {
     UserService userService;
 
     // 去往管理用户的界面
-    @GetMapping(value = "user/manage")
+    @GetMapping(value = "/user/manage")
     public String userManageToPage(HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -40,7 +40,7 @@ public class UserController {
     }
 
     // 去往更新用户的界面
-    @GetMapping(value = "user/update/{id}")
+    @GetMapping(value = "/user/update/{id}")
     public String userUpdateToPage(@PathVariable("id") Integer id, HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -62,7 +62,7 @@ public class UserController {
     }
 
     // 更新用户
-    @PostMapping(value = "user/update")
+    @PostMapping(value = "/user/update")
     public String userUpdate(User user, HttpSession session, Model model) {
 
         if (userService.updateUser(user) == 0) {
@@ -79,7 +79,7 @@ public class UserController {
     }
 
     // 删除用户
-    @GetMapping(value = "user/delete/{id}")
+    @GetMapping(value = "/user/delete/{id}")
     public String userDelete(@PathVariable("id") Integer id, HttpSession session, Model model) {
         // 如果用户不符合规范
         User user = (User) session.getAttribute("user");
@@ -107,7 +107,7 @@ public class UserController {
 
 
     // 更新密码的界面
-    @GetMapping(value = "user/updatePwd")
+    @GetMapping(value = "/user/updatePwd")
     public String userUpdatePwdToPage(HttpSession session, Model model) {
 
         // 如果用户不符合规范
@@ -122,7 +122,7 @@ public class UserController {
     }
 
     // 更新密码
-    @PostMapping(value = "user/updatePwd")
+    @PostMapping(value = "/user/updatePwd")
     public String userUpdatePwd(User user, String newPassword, HttpSession session, Model model) {
         // 将实体类的密码改变
         user.setPassword(newPassword);
