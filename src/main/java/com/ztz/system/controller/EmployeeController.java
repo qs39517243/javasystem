@@ -36,7 +36,7 @@ public class EmployeeController {
 
         List<Employee> employees = employeeService.getAllEmployees();
         model.addAttribute("employees", employees);
-        return "/employee_list";
+        return "employee_list";
     }
 
     // 关键字查询——>list
@@ -52,7 +52,7 @@ public class EmployeeController {
 
         List<Employee> employees = employeeService.getSelectiveEmployees(text);
         model.addAttribute("employees", employees);
-        return "/employee_list";
+        return "employee_list";
     }
 
     // 关键字查询——>manage
@@ -67,12 +67,12 @@ public class EmployeeController {
         } else if (user.getUserType() == 2 || user.getUserType() == 3) {
             // 用户权限不足，返回主页
             model.addAttribute("msg", "权限不足，请联系管理员授予权限");
-            return "/index";
+            return "index";
         }
 
         List<Employee> employees = employeeService.getSelectiveEmployees(text);
         model.addAttribute("employees", employees);
-        return "/employee_manage";
+        return "employee_manage";
     }
 
     // 跳转添加职员页面
@@ -87,10 +87,10 @@ public class EmployeeController {
         } else if (user.getUserType() == 2 || user.getUserType() == 3) {
             // 用户权限不足，返回主页
             model.addAttribute("msg", "权限不足，请联系管理员授予权限");
-            return "/index";
+            return "index";
         }
 
-        return "/employee_add";
+        return "employee_add";
     }
 
     // 表单提交，添加职员
@@ -105,7 +105,7 @@ public class EmployeeController {
         } else if (user.getUserType() == 2 || user.getUserType() == 3) {
             // 用户权限不足，返回主页
             model.addAttribute("msg", "权限不足，请联系管理员授予权限");
-            return "/index";
+            return "index";
         }
 
         // 添加
@@ -116,7 +116,7 @@ public class EmployeeController {
         List<Employee> employees = employeeService.getAllEmployees();
         model.addAttribute("employees", employees);
         // 返回
-        return "/employee_list";
+        return "employee_list";
     }
 
     // 跳转manage页面
@@ -131,12 +131,12 @@ public class EmployeeController {
         } else if (user.getUserType() == 2 || user.getUserType() == 3) {
             // 用户权限不足，返回主页
             model.addAttribute("msg", "权限不足，请联系管理员授予权限");
-            return "/index";
+            return "index";
         }
 
         List<Employee> employees = employeeService.getAllEmployees();
         model.addAttribute("employees", employees);
-        return "/employee_manage";
+        return "employee_manage";
     }
 
 
@@ -151,13 +151,13 @@ public class EmployeeController {
         } else if (user.getUserType() == 2 || user.getUserType() == 3) {
             // 用户权限不足，返回主页
             model.addAttribute("msg", "权限不足，请联系管理员授予权限");
-            return "/index";
+            return "index";
         }
 
         // 查找对应的信息，要反馈到界面上
         Employee employee = employeeService.getEmployeeById(id);
         model.addAttribute("emp", employee);
-        return "/employee_update";
+        return "employee_update";
     }
 
     // 提交修改表单
@@ -172,7 +172,7 @@ public class EmployeeController {
         } else if (user.getUserType() == 2 || user.getUserType() == 3) {
             // 用户权限不足，返回主页
             model.addAttribute("msg", "权限不足，请联系管理员授予权限");
-            return "/index";
+            return "index";
         }
 
         // 调用service修改
@@ -183,7 +183,7 @@ public class EmployeeController {
         List<Employee> employees = employeeService.getAllEmployees();
         model.addAttribute("employees", employees);
         // 返回
-        return "/employee_manage";
+        return "employee_manage";
     }
 
     // 删除
@@ -197,7 +197,7 @@ public class EmployeeController {
         } else if (user.getUserType() == 2 || user.getUserType() == 3) {
             // 用户权限不足，返回主页
             model.addAttribute("msg", "权限不足，请联系管理员授予权限");
-            return "/index";
+            return "index";
         }
 
         // 调用service删除
@@ -208,6 +208,6 @@ public class EmployeeController {
         List<Employee> employees = employeeService.getAllEmployees();
         model.addAttribute("employees", employees);
         // 返回
-        return "/employee_manage";
+        return "employee_manage";
     }
 }
